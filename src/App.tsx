@@ -6,7 +6,7 @@ const App: React.FC = () => {
   const fetchRequest = useCallback(async () => {
     const url = "https://zenquotes.io/api/random/";
     const proxy = "https://cors-anywhere.herokuapp.com/"
-    const response = await fetch(proxy+url);
+    const response = await fetch(proxy + url);
     let data = await response.json();
     newQuote({ "q": data[0].q, "a": data[0].a });
     randomColour();
@@ -45,16 +45,21 @@ const App: React.FC = () => {
   const tweet = useRef<HTMLAnchorElement>(null);
 
   // Render Quote box
-    return (
-      <div id="quote-box">
-        <p id="text" className="text">{quote.q}</p>
-        <div className="subdivision">
-          <p id="author" className="text">~ {quote.a}</p>
-          <div id="button-container" className="btn">
-            <a id="tweet-quote" className="text" href={intent} ref = { tweet } target="_blank">Tweet</a>
-            <button id="new-quote" className="btn text" onClick={fetchRequest} ref = {btn}>New quote</button>
+  return (
+      <div id="wrap">
+        <div id="quote-box">
+          <p id="text" className="text">{quote.q}</p>
+          <div className="subdivision">
+            <p id="author" className="text">~ {quote.a}</p>
+            <div id="button-container" className="btn">
+              <a id="tweet-quote" className="text" href={intent} ref = { tweet } target="_blank">Tweet</a>
+              <button id="new-quote" className="btn text" onClick={fetchRequest} ref = {btn}>New quote</button>
+            </div>
           </div>
-        </div>
+      </div>
+      <p id="subtitle">Made by <a href="https://twitter.com/woj_wozniak" target="_blank">woj.wozniak</a> for freecodecamp.org course</p>
+    <p id="more"><a href="https://wojwozniak.github.io/">More projects</a></p>
+    <p id="credits">Inspirational quotes provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a></p>
       </div>
     )
 }
