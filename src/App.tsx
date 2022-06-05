@@ -4,7 +4,9 @@ import './App.css'
 const App: React.FC = () => {
   // Get quote from API
   const fetchRequest = useCallback(async () => {
-    const response = await fetch("https://zenquotes.io/api/random/");
+    const url = "https://zenquotes.io/api/random/";
+    const proxy = "https://cors-anywhere.herokuapp.com/"
+    const response = await fetch(proxy+url);
     let data = await response.json();
     newQuote({ "q": data[0].q, "a": data[0].a });
     randomColour();
