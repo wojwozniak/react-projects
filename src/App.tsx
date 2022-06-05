@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback} from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import './App.css'
 
 const App: React.FC = () => {
@@ -20,16 +20,27 @@ const App: React.FC = () => {
     let bgColor = "rgb(" + a + "," + b + "," + c + ")";
     document.body.style.background = bgColor;
     document.body.style.color = bgColor;
+    if (btn.current !== null) {
+      btn.current.style.backgroundColor = bgColor;
+    }
+    if (tweet.current !== null) {
+      tweet.current.style.color = bgColor;
+    }
   }
+    
   
   // First load of the app
   useEffect(() => {
-    fetchRequest();
+
     randomColour();
   }, []);
 
   // State with quote
-  const [quote, newQuote] = useState({"q":"","a":""});
+  const [quote, newQuote] = useState({ "q": "", "a": "" });
+  
+  // Button and tweet color reference
+  const btn = useRef<HTMLButtonElement>(null);
+  const tweet = useRef<HTMLAnchorElement>(null);
 
   // Render Quote box
     return (
@@ -38,8 +49,8 @@ const App: React.FC = () => {
         <div className="subdivision">
           <p id="author" className="text">~ {quote.a}</p>
           <div id="button-container" className="btn">
-            <a id="tweet-quote" className="text" href="https://twitter.com/intent/tweet" target="_blank">Tweet</a>
-            <button id="new-quote" className="btn text" onClick={fetchRequest}>New quote</button>
+            <a id="tweet-quote" className="text" href="https://twitter.com/intent/tweet" ref = { tweet } target="_blank">Tweet</a>
+            <button id="new-quote" className="btn text" onClick={fetchRequest} ref = {btn}>New quote</button>
           </div>
         </div>
       </div>
