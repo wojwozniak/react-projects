@@ -31,7 +31,7 @@ const App: React.FC = () => {
   
   // First load of the app
   useEffect(() => {
-
+    fetchRequest();
     randomColour();
   }, []);
 
