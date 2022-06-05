@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+body,html, #root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  text-align: center;
+}
+
+#quote-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  max-width: 500px;
+  height: fit-content;
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 20px;
+}
+
+.subdivision {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  text-align: right;
+  width: 80%;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.btn {
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 8px;
+  min-width: 100px;
+}
+
+#tweet-quote {
+  text-decoration: none;
+}
+
+a {
+  color: goldenrod;
+}
+
+#subtitle, #more, #credits {
+  color: black;
+  margin: 4px;
+}
+
+#credits {
+  margin-bottom: 12px;
+}
