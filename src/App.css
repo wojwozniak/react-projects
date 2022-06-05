@@ -43,8 +43,9 @@ body,html, #root {
   color: white;
   border-radius: 6px;
   font-weight: bold;
-  padding: 8px;
+  padding: 12px;
   min-width: 100px;
+  border: 0px;
 }
 
 #tweet-quote {

@@ -10,6 +10,7 @@ const App: React.FC = () => {
     let data = await response.json();
     newQuote({ "q": data[0].q, "a": data[0].a });
     randomColour();
+    setIntent(`https://twitter.com/intent/tweet?text=${data[0].q}`)
   }, []);
 
   // Generate Background colour 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
 
   // State with quote
   const [quote, newQuote] = useState({ "q": "", "a": "" });
+  const [intent, setIntent] = useState("https://twitter.com/intent/tweet");
   
   // Button and tweet color reference
   const btn = useRef<HTMLButtonElement>(null);
@@ -49,7 +51,7 @@ const App: React.FC = () => {
         <div className="subdivision">
           <p id="author" className="text">~ {quote.a}</p>
           <div id="button-container" className="btn">
-            <a id="tweet-quote" className="text" href="https://twitter.com/intent/tweet" ref = { tweet } target="_blank">Tweet</a>
+            <a id="tweet-quote" className="text" href={intent} ref = { tweet } target="_blank">Tweet</a>
             <button id="new-quote" className="btn text" onClick={fetchRequest} ref = {btn}>New quote</button>
           </div>
         </div>
