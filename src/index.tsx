@@ -11,8 +11,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Top />
-    <Editor />
-    <Preview />
+    <div id="main">
+      <Editor />
+      <Preview />
+    </div>
     <Foot />
   </React.StrictMode>
 );

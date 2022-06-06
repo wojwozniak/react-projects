@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-body {
+body, html {
   background-color: #f5f5f5;
   font-family: 'Open Sans';
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: 100%;
+}
+
+#root {
+  margin: 15px;
 }
 
 div {
@@ -48,37 +53,33 @@ h1 {
   align-items: center;
 }
 
-#preview {
-  max-width: 95%;
-  min-height: 100px;
-  min-width: 50%;
-  text-align: left;
-}
-
 #preview-wrapper {
   background-color: white;
-  padding-left: 20px;
-  padding-right: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 95%;
+  min-height: 400px;
+  text-align: left;
 }
 
+#foot {
+  margin-top: 30px;
+}
 
-@media screen and (min-width: 900px) {
-  #content {
-    flex-direction: row;
-    align-items: stretch;
-  }
-  
-  textarea {
-    width: 50%;
-  }
-  
-  #preview-wrapper {
-    width: 50%;
-  }
-  
+#foot a {
+  color: goldenrod;
+}
 
+#main {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 600px) {
+  #main {
+    display: flex;
+    flex-direction: column;
+  }
   
 }

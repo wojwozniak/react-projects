@@ -4,7 +4,8 @@ import './css.css';
 
 function Preview() {
   return (
-    <div></div>
+    <div id="preview-wrapper">
+    </div>
   );
 }
 
