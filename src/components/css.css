@@ -10,10 +10,6 @@ body, html {
   min-height: 100%;
 }
 
-#root {
-  margin: 15px;
-}
-
 div {
   width: 100%;
   margin: 0;
@@ -32,6 +28,12 @@ textarea {
   min-height: 400px;
 }
 
+#editor {
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 blockquote, pre {
   background-color: #ebecf0;
 }
@@ -47,10 +49,11 @@ h1 {
 }
 
 #root {
+  margin: 15px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 #preview-wrapper {
@@ -58,6 +61,7 @@ h1 {
   max-width: 95%;
   min-height: 400px;
   text-align: left;
+  margin: auto;
 }
 
 #preview {
@@ -71,6 +75,10 @@ h1 {
 
 #foot a {
   color: goldenrod;
+}
+
+#foot a:hover {
+  color: darkgoldenrod;
 }
 
 #main {
@@ -104,4 +112,5 @@ h1 {
 #reset:hover {
   background-color: darkred;
   cursor: pointer;
+  color: black;
 }

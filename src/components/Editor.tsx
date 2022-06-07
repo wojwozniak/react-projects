@@ -50,7 +50,6 @@ const Editor: React.FunctionComponent<EditorProps> = ({ passData }) => {
   2. is a great way
   3. to show something
   4. step by step
-  - Numbers aren't nessesary though
   
   ![Img](https://ih1.redbubble.net/image.1456184519.3847/flat,128x,075,f-pad,128x128,f8f8f8.jpg)   
   And this is your github readme after doing it using this editor
