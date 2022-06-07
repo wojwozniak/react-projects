@@ -5,7 +5,7 @@ import Head from './components/Head';
 import Foot from './components/Foot';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('drum-machine') as HTMLElement
 );
 root.render(
   <React.StrictMode>
