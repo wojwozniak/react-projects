@@ -1,6 +1,6 @@
 import './css.css';
 
-function Foot() {
+const Foot = () => {
   return (
     <div id="foot">
       <p id="subtitle">Made by <a href="https://twitter.com/woj_wozniak" target="_blank">woj.wozniak</a> for freecodecamp.org course</p>

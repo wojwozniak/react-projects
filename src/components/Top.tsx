@@ -1,6 +1,6 @@
 import './css.css';
 
-function Top() {
+const Top = () => {
   return (
     <div id="header">
       <h1 id="title">HTML Markdown Previewer</h1>
