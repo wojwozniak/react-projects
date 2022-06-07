@@ -3,12 +3,17 @@ import { useEffect } from 'react';
 
 // Remember about DOMpurify
 
-const Preview: React.FunctionComponent = () => {
+// Type of data passed from parent component
+type PreviewProps = {
+  data: string;
+}
 
+const Preview: React.FunctionComponent<PreviewProps> = ({ data }) => {
 
+  // Render preview using data from parent component
   return (
     <div id="preview-wrapper">
-      <p></p>
+      <p>{ data }</p>
     </div>
   );
 }
