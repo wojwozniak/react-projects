@@ -4,6 +4,8 @@ import Button from './Button';
 import Display from './Display';
 import Switch from './Switch';
 
+// # Main drum machine component
+
 // Sounds array
 const sounds1 = [
   {
@@ -123,26 +125,51 @@ const sounds2 = [
 //Default chosen sounds to sounds1
 let sounds = sounds1;
 
+// Component declaration
 const App: React.FunctionComponent = () => {
 
+  // State for display
   const [display, setDisplay] = useState("Now playing");
+  
+  // State for button clicked (keyboard)
+  const [clicked, setClicked] = useState("");
 
+  // State allowing to press same key twice and keep playing music
+  const [play, forcePlay] = useState(0);
+
+  // Setting display after clicking button
   const getClicked = (data: string) => {
     setDisplay(data);
   }
 
+  // Change music set
   const handleChange = (set: string) => {
     setDisplay(set);
     if (sounds === sounds1) {
       sounds = sounds2;
+    } else {
+      sounds = sounds1;
     }
   }
 
+  // Handling key pressing
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    let output = sounds.filter((sound) => {
+      if (sound.keyTrigger === e.key.toUpperCase()) {
+        return sound.keyTrigger;
+      }
+    });
+    setClicked(output[0].keyTrigger);
+    setDisplay(output[0].id);
+    forcePlay(play+1);
+  }
+
+  // Rendering drums
   return (
     <>
-      <div id="drums">
+      <div id="drums" onKeyDown={(e) => handleKeyPress(e)}>
       {sounds.map((sound) => {
-        return <Button key={sound.keyCode} id={sound.id} url={sound.url} text={sound.keyTrigger} passText={getClicked} />;
+        return <Button play={play} key={sound.keyCode} id={sound.id} url={sound.url} text={sound.keyTrigger} passText={getClicked} clicked = { clicked } />;
       })}
       </div>
       <Display text={display} />
