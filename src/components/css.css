@@ -85,3 +85,23 @@ h1 {
   }
   
 }
+
+#reset {
+  position: fixed;
+  background-color: red;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  padding-top: 6px;
+  font-size: 25px;
+}
+
+#reset:hover {
+  background-color: darkred;
+  cursor: pointer;
+}

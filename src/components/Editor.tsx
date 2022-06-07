@@ -1,5 +1,6 @@
 import './css.css';
 import { useState, useEffect } from 'react';
+import { BsTrashFill } from 'react-icons/bs';
 
 // Declare type of prop that components gets from parent component
 type EditorProps = {
@@ -69,9 +70,16 @@ const Editor: React.FunctionComponent<EditorProps> = ({ passData }) => {
     passData(text);
   }, [text]);
 
+  const handleClear = () => {
+    newText("");
+  }
+
   //Render textarea
   return (
-    <textarea id="editor" onChange={(e) => handleChange(e)} value={text}></textarea>
+    <>
+      <textarea id="editor" onChange={(e) => handleChange(e)} value={text}></textarea>
+      <button id="reset" onClick={handleClear}><BsTrashFill /></button>
+    </>
   );
 }
 
