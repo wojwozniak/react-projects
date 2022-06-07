@@ -1,5 +1,5 @@
 import './css.css';
-import { useEffect } from 'react';
+import  Markdown  from 'marked-react';
 
 // Remember about DOMpurify
 
@@ -13,7 +13,9 @@ const Preview: React.FunctionComponent<PreviewProps> = ({ data }) => {
   // Render preview using data from parent component
   return (
     <div id="preview-wrapper">
-      <p>{ data }</p>
+      <div id="preview">
+        <Markdown value={ data }/>
+      </div>
     </div>
   );
 }

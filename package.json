@@ -11,6 +11,8 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "dompurify": "^2.3.8",
+    "marked": "^4.0.16",
+    "marked-react": "^1.1.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
@@ -40,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/marked": "^4.0.3"
   }
 }

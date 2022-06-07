@@ -28,7 +28,7 @@ span {
 textarea {
   margin: 0;
   padding: 0;
-  width: 95%;
+  width: 90%;
   min-height: 400px;
 }
 
@@ -55,12 +55,14 @@ h1 {
 
 #preview-wrapper {
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   max-width: 95%;
   min-height: 400px;
   text-align: left;
+}
+
+#preview {
+  margin: 8px;
+  width: 95%
 }
 
 #foot {
