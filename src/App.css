@@ -12,6 +12,12 @@ body,html, #root {
   margin: 0;
 }
 
+#wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #quote-box {
   margin-top: 20%;
   display: flex;
@@ -33,6 +39,15 @@ body,html, #root {
     margin-top: 30%;
   }
   
+}
+
+@media screen and (max-width: 320px) {
+  #button-container {
+    flex-direction: column !important;
+    height: auto;
+    text-align: center;
+    gap: 15px;
+  }
 }
 
 .subdivision {
@@ -57,10 +72,21 @@ body,html, #root {
   padding: 12px;
   min-width: 100px;
   border: 0px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: lightgray;
 }
 
 #tweet-quote {
   text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#tweet-quote:hover {
+  background-color: lightgray;
 }
 
 a {
@@ -70,6 +96,10 @@ a {
 #subtitle, #more, #credits {
   color: black;
   margin: 4px;
+}
+
+#subtitle a:hover, #more a:hover, #credits a:hover {
+  color: darkgoldenrod;
 }
 
 #subtitle {

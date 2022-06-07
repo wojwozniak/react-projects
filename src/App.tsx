@@ -10,7 +10,7 @@ const App: React.FC = () => {
     let data = await response.json();
     newQuote({ "q": data[0].q, "a": data[0].a });
     randomColour();
-    setIntent(`https://twitter.com/intent/tweet?text=${data[0].q}`)
+    setIntent(`https://twitter.com/intent/tweet?text=${data[0].q}%20%20%20%20%20~%20${data[0].a}`)
   }, []);
 
   // Generate Background colour 
@@ -58,8 +58,9 @@ const App: React.FC = () => {
           </div>
       </div>
       <p id="subtitle">Made by <a href="https://twitter.com/woj_wozniak" target="_blank">woj.wozniak</a> for freecodecamp.org course</p>
-    <p id="more"><a href="https://wojwozniak.github.io/">More projects</a></p>
-    <p id="credits">Inspirational quotes provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a></p>
+      <p id="more"><a href="https://wojwozniak.github.io/">More projects</a></p>
+      <p id="more"><a href="https://cors-anywhere.herokuapp.com/" target="_blank">CORS Anywhere</a></p>
+      <p id="credits">Inspirational quotes provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a></p>
       </div>
     )
 }
