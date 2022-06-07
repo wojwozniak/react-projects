@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Top from './components/Top';
 import Foot from './components/Foot';
-import App from './components/App';
+import Editor from './components/Editor';
+import Preview from './components/Preview';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +11,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Top />
-    <App  />
+    <div id="main">
+      <Editor />
+      <Preview />
+    </div>
     <Foot />
   </React.StrictMode>
 );
