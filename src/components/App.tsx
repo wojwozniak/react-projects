@@ -153,7 +153,7 @@ const App: React.FunctionComponent = () => {
   }
 
   // Handling key pressing
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyPress = (e: React.KeyboardEvent) => {
     let output = sounds.filter((sound) => {
       if (sound.keyTrigger === e.key.toUpperCase()) {
         return sound.keyTrigger;
