@@ -138,12 +138,26 @@ input:checked + .slider:before {
 
 #switch-container {
   border: 2px solid greenyellow;
+  height: 60px;
   width: 140px;
-  height: 80px;
-  padding: 30px;
+  padding: 20px;
   background-color: white;
   border-radius: 30px;
   position: fixed;
   bottom: 10px;
   right: 10px;
+}
+
+#switch-container p {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 440px) {
+  #switch-container {
+    position: relative;
+  }
+
+  #foot {
+    margin-top: 0px;
+  }
 }
