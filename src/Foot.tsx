@@ -1,4 +1,4 @@
-import './App.css';
+import './css.css';
 
 const Foot:React.FunctionComponent = () => {
   return (
