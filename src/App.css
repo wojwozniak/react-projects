@@ -71,6 +71,11 @@ h1 {
   margin-top: 14px;
 }
 
+.big-screen {
+  width: fit-content !important;
+  background-color: #20231E;
+}
+
 .button-container {  
   background-color: gray;
   height: 325px;
