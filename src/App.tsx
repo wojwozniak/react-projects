@@ -24,7 +24,6 @@ const buttons = [
   { name: "nine", symbol: "9" }
 ];
 
-
 const App: React.FunctionComponent = () => {
 
   // Possible actions for reducer
@@ -205,11 +204,14 @@ const App: React.FunctionComponent = () => {
     return newState;
   }
 
+  // Main state of app
   const [state, dispatch] = useReducer(reducer, "0");
   
+  // Receive data of button clicked and pass it to the reducer
   const getClicked = (data: action) => {
     dispatch(data);
   }
+
   return (
     <div id="app">
       <p id="brand">Vadowitz</p>
