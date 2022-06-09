@@ -131,6 +131,9 @@ const App: React.FunctionComponent = () => {
         newState = "0";
         break;
       // Numbers are no problem, you can put then anywhere
+      case 'zero':
+        newState = helper + '0';
+        break;
       case 'one':
         newState = helper+"1";
         break;
