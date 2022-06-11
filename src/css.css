@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-body,html, #root {
+html {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+body, html, #root, #wrapper {
   min-height: 100%;
   width: 100%;
   display: flex;
@@ -17,46 +22,42 @@ a {
 }
 
 #title {
-    margin-bottom: 60px;
-}
-
-#wrapper {
-    background-color: yellowgreen;
-    height: 350px;
-    width: 400px;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 40px;
+    color: white;
+    font-size: 40px;
 }
 
 #clock {
-    margin-top: 30px;
-    font-size: 2rem;
-    border: 3px solid white;
-    padding: 20px;
-    border-radius: 30px;
+    margin-top: 20px;
+    font-size: 35px;
+    border: 5px solid white;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #label {
     font-size: 25px;
     margin-bottom: 12px;
+    margin-top: 0px;
 }
 
-#start {
-    color: white;
-    text-decoration: underline;
-}
-
-#start:hover {
-    color: gold;
-    cursor: pointer;
+#picker-label-wrap {
+    width: fit-content;
+    border: 3px solid white;
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 40px;
 }
 
 #picker-wrap {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 50px;
     width: fit-content;
     margin-top: -15px;
 }
@@ -103,10 +104,6 @@ a {
 }
 
 span {
-    position: "absolute";
-    top: "50%";
-    left: "50%";
-    transform: "translate(-50%, -50%)";
     font-size: 30px;
 }
 
@@ -121,26 +118,42 @@ span {
     color: white;
 }
 
-#subtitle, #more, #credits {
-  color: black;
-  margin: 4px;
+.startreset {
+    color: goldenrod;
+    margin-top: 20px;
+    text-decoration: underline;
+    font-size: 40px;
 }
 
-#subtitle a:hover, #more a:hover, #credits a:hover {
+.startreset:hover {
+    color: gold;
+    cursor: pointer;
+}
+
+.startreset:active {
+    transform: translateY(-1px);
+}
+
+#subtitle, #more {
+  color: white;
+}
+
+#subtitle a:hover, #more a:hover {
   color: darkgoldenrod;
 }
 
 #subtitle {
   margin-top: 0;
-}
-
-#credits {
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 #foot {
-    margin-top: 60px;
-    background-color: white;
+    margin-top: 50px;
     width: 100%;
     margin-bottom: 0;
+    color: white;
+}
+
+#more {
+    margin-bottom: 20px;
 }

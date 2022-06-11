@@ -1,11 +1,11 @@
-import React, { useReducer, useEffect } from 'react';
+import { useReducer } from 'react';
 import './css.css';
-
 function App() {
-
+  // Declaring possible Actions for reducer
   type Actions = 
-    | "start" | "stop" | "session-increase" | "session-decrease" | "break-increase" | "break-decrease"
-  
+  | "start" | "stop" | "session-increase" | "session-decrease" | "break-increase" | "break-decrease"
+
+  // Declaring State type
   type State = {
     clock: string,
     label: string,
@@ -17,6 +17,7 @@ function App() {
     break: number
   }
 
+  // Declaring initial state
   const initialState:State = {
     clock: "25:00",
     label: "Session",
@@ -28,8 +29,9 @@ function App() {
     break: 300
   };
 
-  const reducer = (state: State, action: Actions) => {
-    let newState = state;
+  // Main reducer
+  const reducer = (state:State, action: Actions) => {
+    let newState: State = { ...state };
     switch (action) {
       case "start":
         newState.running = true;
@@ -38,28 +40,28 @@ function App() {
         newState.running = false;
         break;
       case "session-increase":
-        newState.sessiontimer = state.sessiontimer + 1;
-        newState.session = state.session + 60;
+        newState.sessiontimer += 1;
+        newState.session += 60;
         break;
-      case "session-decrease":
-        newState.sessiontimer = state.sessiontimer - 1;
-        newState.session = state.session - 60;
+     case "session-decrease":
+        newState.sessiontimer -= 1;
+        newState.session -= 60;
         break;
       case "break-increase":
-        newState.breaktimer = state.breaktimer + 1;
-        newState.break = state.break + 60;
+        newState.breaktimer += 1;
+        newState.break += 60;
         break;
       case "break-decrease":
-        newState.breaktimer = state.breaktimer - 1;
-        newState.break = state.break - 60;
-        break;
+        newState.breaktimer -= 1;
+        newState.break -= 60;
+        break; 
       default:
         throw new Error();
     }
-    console.log(newState);
     return newState;
   }
 
+  // Reducer declaration, calling reducer function and initialState
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleStartStop = () => {
@@ -69,7 +71,8 @@ function App() {
       dispatch("stop");
     }
   }
-
+    
+  // Handle four main setting buttons
   const handleBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     switch (e.currentTarget.id) {
       case "session-plus":
@@ -87,39 +90,36 @@ function App() {
       default:
         throw new Error();
     }
-
   }
 
- /* useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("aaa");
-    }, 1000);
-  }, [state]); */
-
+  // Render function
   return (
     <div id="wrapper">
-      <div id="clock" className="timer">{ state.clock }</div>
-      <p id="label" className="timer">{state.label}</p>
-      <div id="picker-wrap">
-        <div id="session-wrap">
-          <div id="session" className="picker">
-            <button id="session-plus" onClick={(e)=>handleBtn(e)}  className="btn"><span>+</span></button>
-            <p id="session-timer" className="show">{ state.sessiontimer }</p>
-            <button id="session-minus" onClick={(e)=>handleBtn(e)} className="btn"><span>-</span></button>
-          </div>
-          <p className="sublabel">Session</p>
-        </div>
-        <div id="break-wrap">
-          <div id="break" className="picker">
-            <button id="break-plus" onClick={(e)=>handleBtn(e)} className="btn"><span>+</span></button>
-            <p id="break-timer" className="show">{ state.breaktimer }</p>
-            <button id="break-minus" className="btn" onClick={(e)=>handleBtn(e)}><span>-</span></button>
-          </div>
-          <p className="sublabel">Break</p>
-        </div>
-      </div>
-      <a id="start" onClick={handleStartStop}>{ state.startstop }</a>
-    </div>
+      <div id="clock" className="timer"><p>{state.clock}</p></div>
+      <a id="start" className="startreset" onClick={handleStartStop}>{ state.startstop }</a>
+      <div id="picker-label-wrap">
+        <p id="label" className="timer">{state.label}</p>
+        <div id="picker-wrap">
+          <div id="session-wrap">
+            <div id="session" className="picker">
+              <button id="session-plus" onClick={(e)=>handleBtn(e)}  className="btn"><span>+</span></button>
+              <p id="session-timer" className="show">{ state.sessiontimer }</p>
+              <button id="session-minus" onClick={(e)=>handleBtn(e)} className="btn"><span>-</span></button>
+            </div> {/* End of session */}
+            <p className="sublabel">Session Length</p>
+          </div> {/* End of session-wrap */}
+          <div id="break-wrap">
+            <div id="break" className="picker">
+              <button id="break-plus" onClick={(e)=>handleBtn(e)} className="btn"><span>+</span></button>
+              <p id="break-timer" className="show">{ state.breaktimer }</p>
+              <button id="break-minus" className="btn" onClick={(e)=>handleBtn(e)}><span>-</span></button>
+            </div> {/* End of break */}
+            <p className="sublabel">Break Length</p>
+          </div> {/* End of break-wrap */}
+        </div> {/* End of picker-wrap */}
+      </div> {/* End of picker-label-wrap */}
+      <a id="reset" className="startreset"><span>Reset</span></a>
+    </div> 
   );
 }
 

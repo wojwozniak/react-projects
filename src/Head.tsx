@@ -3,7 +3,7 @@ import './css.css';
 const Head:React.FunctionComponent = () => {
     return (
         <h1 id="title">
-            Pomodoro Clock
+            Pomodoro Clock App
         </h1>
   );
 }
