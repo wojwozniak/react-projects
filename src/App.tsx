@@ -37,9 +37,26 @@ function App() {
       case "stop":
         newState.running = false;
         break;
+      case "session-increase":
+        newState.sessiontimer = state.sessiontimer + 1;
+        newState.session = state.session + 60;
+        break;
+      case "session-decrease":
+        newState.sessiontimer = state.sessiontimer - 1;
+        newState.session = state.session - 60;
+        break;
+      case "break-increase":
+        newState.breaktimer = state.breaktimer + 1;
+        newState.break = state.break + 60;
+        break;
+      case "break-decrease":
+        newState.breaktimer = state.breaktimer - 1;
+        newState.break = state.break - 60;
+        break;
       default:
         throw new Error();
     }
+    console.log(newState);
     return newState;
   }
 
@@ -54,7 +71,23 @@ function App() {
   }
 
   const handleBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e);
+    switch (e.currentTarget.id) {
+      case "session-plus":
+        dispatch("session-increase");
+        break;
+      case "session-minus":
+        dispatch("session-decrease");
+        break;
+      case "break-plus":
+        dispatch("break-increase");
+        break;
+      case "break-minus":
+        dispatch("break-decrease");
+        break;
+      default:
+        throw new Error();
+    }
+
   }
 
  /* useEffect(() => {
