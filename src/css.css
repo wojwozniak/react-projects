@@ -118,20 +118,22 @@ span {
     color: white;
 }
 
+#buttonwrap {
+    margin-top: 40px;
+}
+
 .startreset {
     color: goldenrod;
     margin-top: 20px;
     text-decoration: underline;
-    font-size: 40px;
+    font-size: 35px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .startreset:hover {
     color: gold;
     cursor: pointer;
-}
-
-.startreset:active {
-    transform: translateY(-1px);
 }
 
 #subtitle, #more {

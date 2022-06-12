@@ -1,9 +1,9 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import './css.css';
 function App() {
   // Declaring possible Actions for reducer
-  type Actions = 
-  | "start" | "stop" | "session-increase" | "session-decrease" | "break-increase" | "break-decrease"
+  type Actions =
+    | "start" | "stop" | "session-increase" | "session-decrease" | "break-increase" | "break-decrease" | "reset" | "clockdown"
 
   // Declaring State type
   type State = {
@@ -12,9 +12,8 @@ function App() {
     startstop: string,
     running: boolean,
     sessiontimer: number,
-    session: number,
     breaktimer: number,
-    break: number
+    remaining: number
   }
 
   // Declaring initial state
@@ -24,36 +23,89 @@ function App() {
     startstop: "Start",
     running: false,
     sessiontimer: 25,
-    session: 1500,
     breaktimer: 5,
-    break: 300
+    remaining: 1500
   };
-
+  
+  // Function handling clock update
+  const handleClockUpdate = (input: number) => {
+    let a = Math.floor(input / 60).toString();
+    if (a.length === 1) {
+      a = "0" + a;
+    }
+    let b = (input % 60).toString();
+    if (b.length === 1) {
+      b = "0" + b;
+    }
+    let output = `${a}:${b}`;
+    return output;
+  }
+  
   // Main reducer
   const reducer = (state:State, action: Actions) => {
     let newState: State = { ...state };
     switch (action) {
+      case "clockdown":
+        if (newState.remaining > 1) {
+          newState.remaining = state.remaining - 1;
+          newState.clock = handleClockUpdate(newState.remaining);
+        } else {
+          // else fires when clock reaches 0, so change of mode is needed
+          if (newState.label === "Session") {
+            newState.label = "Break";
+            newState.remaining = state.breaktimer * 60;
+            newState.clock = handleClockUpdate(newState.remaining);
+          } else {
+            newState.label = "Session";
+            newState.remaining = state.sessiontimer * 60;
+            newState.clock = handleClockUpdate(newState.remaining);
+          }
+        }
+        break;
       case "start":
         newState.running = true;
+        newState.startstop = "Stop";
         break;
       case "stop":
         newState.running = false;
+        newState.startstop = "Start";
+        break;
+      case "reset":
+        newState.running = false;
+        newState.label = "Session";
+        newState.startstop = "Start";
         break;
       case "session-increase":
         newState.sessiontimer += 1;
-        newState.session += 60;
+        if (state.label === "Session") {
+          newState.remaining += 60;
+          newState.clock = handleClockUpdate(newState.remaining);
+        }
         break;
-     case "session-decrease":
-        newState.sessiontimer -= 1;
-        newState.session -= 60;
+      case "session-decrease":
+        if (state.sessiontimer >= 2) {
+          newState.sessiontimer -= 1;
+          if (state.label === "Session") {
+            newState.remaining -= 60;
+            newState.clock = handleClockUpdate(newState.remaining);
+          }
+        }
         break;
       case "break-increase":
         newState.breaktimer += 1;
-        newState.break += 60;
+        if (state.label === "Break") {
+          newState.remaining += 60;
+          newState.clock = handleClockUpdate(newState.remaining);
+        }
         break;
       case "break-decrease":
-        newState.breaktimer -= 1;
-        newState.break -= 60;
+        if (state.breaktimer >= 2) {
+          newState.breaktimer -= 1;
+          if (state.label === "Break") {
+            newState.remaining -= 60;
+            newState.clock = handleClockUpdate(newState.remaining);
+          }
+        }
         break; 
       default:
         throw new Error();
@@ -64,6 +116,17 @@ function App() {
   // Reducer declaration, calling reducer function and initialState
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // If clock is running dispatch clockdown action (every second -1 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (state.running === true) {
+        dispatch("clockdown");
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [state]);
+
+  // Start/stop button handler
   const handleStartStop = () => {
     if (!state.running) {
       dispatch("start");
@@ -91,12 +154,15 @@ function App() {
         throw new Error();
     }
   }
-
+  
   // Render function
   return (
     <div id="wrapper">
       <div id="clock" className="timer"><p>{state.clock}</p></div>
-      <a id="start" className="startreset" onClick={handleStartStop}>{ state.startstop }</a>
+      <div id="buttonwrap">
+        <a id="start" className="startreset" onClick={handleStartStop}>{state.startstop}</a>
+        <a id="reset" className="startreset" onClick = {()=> dispatch("reset") }>Reset</a>
+      </div>
       <div id="picker-label-wrap">
         <p id="label" className="timer">{state.label}</p>
         <div id="picker-wrap">
@@ -118,7 +184,6 @@ function App() {
           </div> {/* End of break-wrap */}
         </div> {/* End of picker-wrap */}
       </div> {/* End of picker-label-wrap */}
-      <a id="reset" className="startreset"><span>Reset</span></a>
     </div> 
   );
 }
