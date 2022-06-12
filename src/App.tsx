@@ -26,7 +26,11 @@ function App() {
     breaktimer: 5,
     remaining: 1500
   };
-  
+
+  // Sound to play when session/break ends
+
+  const audio = new Audio("https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav");
+
   // Function handling clock update
   const handleClockUpdate = (input: number) => {
     let a = Math.floor(input / 60).toString();
@@ -50,6 +54,7 @@ function App() {
           newState.remaining = state.remaining - 1;
           newState.clock = handleClockUpdate(newState.remaining);
         } else {
+          audio.play();
           // else fires when clock reaches 0, so change of mode is needed
           if (newState.label === "Session") {
             newState.label = "Break";
@@ -74,6 +79,8 @@ function App() {
         newState.running = false;
         newState.label = "Session";
         newState.startstop = "Start";
+        newState.remaining = state.sessiontimer * 60;
+        newState.clock = handleClockUpdate(newState.remaining);
         break;
       case "session-increase":
         newState.sessiontimer += 1;
