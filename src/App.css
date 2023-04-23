@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+body,html, #root {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  text-align: center;
+  margin: 0;
+}
+
+#wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quote-box {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  max-width: 500px;
+  height: fit-content;
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 20px;
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  #quote-box {
+    width: 80%;
+    margin-top: 30%;
+  }
+  
+}
+
+@media screen and (max-width: 320px) {
+  #button-container {
+    flex-direction: column !important;
+    height: auto;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+.subdivision {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  text-align: right;
+  width: 80%;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.btn {
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 12px;
+  min-width: 100px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: lightgray;
+}
+
+#tweet-quote {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#tweet-quote:hover {
+  background-color: lightgray;
+}
+
+a {
+  color: goldenrod;
+}
+
+#subtitle, #more, #credits {
+  color: black;
+  margin: 4px;
+}
+
+#subtitle a:hover, #more a:hover, #credits a:hover {
+  color: darkgoldenrod;
+}
+
+#subtitle {
+  margin-top: 0;
+}
+
+#credits {
+  margin-bottom: 12px;
+}
+
+#foot {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 0;
+}
